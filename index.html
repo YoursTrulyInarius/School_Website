@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home - West Prime Horizon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">
+        <img src="./images/images.jpeg" alt="School Logo">
+        <span>West Prime Horizon Inc.</span>
+    </div>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="academics.html">Academics</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+    </ul>
+</nav>
+
+<section id="home">
+    <div class="home-content">
+        <h1>Welcome to West Prime Horizon</h1>
+        <p>Your future begins here! We provide world-class education and a nurturing environment for every student.</p>
+        <a href="about.html" class="cta-button">Learn More</a>
+    </div>
+</section>
+
+<section id="vision-mission">
+    <div class="container">
+        <div class="box">
+            <h2>Our Vision</h2>
+            <p>West Prime Horizon Institute envisions mature, highly-skilled and competent graduates who live with a quality life locally and globally.</p>
+        </div>
+        <div class="box">
+            <h2>Our Mission</h2>
+            <p>West Prime Horizon Institute is committed to provide quality education for the 21st century learners through a highly competent teachers, holistic curriculum, and conducive learning environment with advance facilities and equipment.</p>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials">
+    <h2>Testimonials</h2>
+    <div class="testimonial-slider">
+        <div class="testimonial active">
+            <img src="./images/aw.jpeg" alt="Student" class="testimonial-img">
+            <p>"The best experience I've ever had! The teachers are amazing and the facilities are top-notch!"</p>
+            <h4>- Dodong Barok</h4>
+        </div>
+        <div class="testimonial">
+            <img src="./images/awe.jpg" alt="Student" class="testimonial-img">
+            <p>"This school has helped me achieve my dreams. The support from the faculty is incredible!"</p>
+            <h4>- May Pamana</h4>
+        </div>
+        <div class="testimonial">
+            <img src="./images/ewa.jpeg" alt="Student" class="testimonial-img">
+            <p>"The extracurricular activities here are awesome. I've made lifelong friends!"</p>
+            <h4>- Chippy Mcdonald</h4>
+        </div>
+        <div class="testimonial">
+            <img src="./images/ohaha.jpg" alt="Student" class="testimonial-img">
+            <p>"The curriculum is very well-structured, and the teachers are always helpful."</p>
+            <h4>- Xiaome Ocho</h4>
+        </div>
+        <div class="testimonial">
+            <img src="./images/son.jpeg" alt="Student" class="testimonial-img">
+            <p>"The campus is beautiful and the learning environment is motivating!"</p>
+            <h4>- Renan Piatos</h4>
+        </div>
+        <div class="testimonial">
+            <img src="./images/sonn.jpeg" alt="Student" class="testimonial-img">
+            <p>"The career services department really helped me secure a great internship."</p>
+            <h4>- Dodong Bina</h4>
+        </div>
+        <div class="testimonial">
+            <img src="./images/sl.jpg" alt="Student" class="testimonial-img">
+            <p>"I've grown so much academically and personally during my time here."</p>
+            <h4>- Dodong Bunal</h4>
+        </div>
+    </div>
+
+    <div class="testimonial-nav">
+        <span class="dot active" onclick="moveToSlide(0)"></span>
+        <span class="dot" onclick="moveToSlide(1)"></span>
+        <span class="dot" onclick="moveToSlide(2)"></span>
+        <span class="dot" onclick="moveToSlide(3)"></span>
+        <span class="dot" onclick="moveToSlide(4)"></span>
+        <span class="dot" onclick="moveToSlide(5)"></span>
+        <span class="dot" onclick="moveToSlide(6)"></span>
+    </div>
+</section>
+
+<div id="chatbot-container">
+    <div id="chatbot-header" onclick="toggleChatbot()">💬 Chat with Us</div>
+    <div id="chatbot-body">
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input-area">
+            <input type="text" id="chatbot-input" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendMessage()">➤</button>
+            <button onclick="startVoiceInput()">🎙️</button>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <p>&copy; 2025 West Prime Horizon. All Rights Reserved.</p>
+</footer>
+</body>
+<script>
+    const chatbotBody = document.getElementById("chatbot-body");
+    const chatbotMessages = document.getElementById("chatbot-messages");
+    
+    function toggleChatbot() {
+        chatbotBody.classList.toggle("open");
+    }
+    
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+    
+    function sendMessage() {
+        const input = document.getElementById('chatbot-input');
+        const message = input.value.trim();
+        if (message) {
+            displayMessage(message, 'user');
+            input.value = '';
+            generateResponse(message);
+        }
+    }
+    
+    function displayMessage(message, type) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = type === 'user' ? 'user-message' : 'chatbot-message';
+    
+        const content = document.createElement('div');
+        content.className = 'message-content';
+        content.innerText = message;
+    
+        msgDiv.appendChild(content);
+        chatbotMessages.appendChild(msgDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    }
+    
+
+    function generateResponse(message) {
+    
+        const typingIndicator = document.createElement('div');
+        typingIndicator.id = 'typing-indicator';
+        typingIndicator.innerText = 'Chatbot is typing...';
+        chatbotMessages.appendChild(typingIndicator);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    
+        setTimeout(() => {
+            typingIndicator.remove();
+    
+            let response = "I'm not sure how to respond to that.";
+    
+            if (message.toLowerCase().includes('hello')) {
+                response = "Hello! How can I help you today? 😊";
+            } else if (message.toLowerCase().includes('admission')) {
+                response = "Admissions are open! You can apply through the 'Apply Now' button.";
+            } else if (message.toLowerCase().includes('fees')) {
+                response = "Our fee structure is available under the 'Academics' section.";
+            } else if (message.toLowerCase().includes('sports')) {
+                response = "We have basketball, badminton, volleyball, chess and more!";
+            } else if (message.toLowerCase().includes('scholarship')) {
+                response = "We offer several scholarships. Visit the 'Scholarships' page for more details.";
+            } else if (message.toLowerCase().includes('gakulang')) {
+                response = "kanang gihatag na nimo ang tanan pero di pa enough niya? iyak"
+            } else if (messasge.toLowerCase().includes('value')) {
+                response = "wala mankay value sa iya gd"
+            }
+    
+            displayMessage(response, 'chatbot');
+        }, 1000);
+    }
+    
+    function startVoiceInput() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+    
+        recognition.start();
+    
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            displayMessage(transcript, 'user');
+            generateResponse(transcript);
+        };
+    
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+        };
+    }
+    </script>
+    
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.dot');
+    
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            dots[i].classList.remove('active');
+        });
+    
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+    }
+    
+    function moveToSlide(index) {
+        currentSlide = index;
+        showSlide(currentSlide);
+    }
+    
+    function autoSlide() {
+        currentSlide++;
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+        showSlide(currentSlide);
+    }
+    
+    setInterval(autoSlide, 4000);
+
+    showSlide(currentSlide);
+    </script>
+    
+</body>
+</html>
